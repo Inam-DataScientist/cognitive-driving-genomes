@@ -1,0 +1,84 @@
+# ============================================================================
+# COGNITIVE DRIVING GENOMES: TRAINING CONFIGURATION
+# ============================================================================
+
+# Distributed Training Setup
+distributed:
+  backend: "nccl"
+  world_size: 2
+  rank: 0
+  master_addr: "127.0.0.1"
+  master_port: 12355
+
+# Environment Parameters
+environment:
+  n_agents: 4
+  state_dim: 8
+  context_dim: 10
+  action_dim: 2
+  T_plan: 10
+  dt: 0.05  # 50ms timestep
+  gamma: 0.99
+  
+# CDG Configuration
+cognitive_genome:
+  context_clusters_capacity: 500
+  behavioral_patterns_max: 20
+  rules_max: 100
+  experience_graph_capacity: 10000
+  
+# Relevance Function
+relevance:
+  inequality_beta: 5.0
+  range_beta: 5.0
+  smooth_min_tau: 1.0
+  theta_threshold: 0.6
+  
+# STL Configuration
+stl:
+  horizon: 10
+  robustness_epsilon: 0.5
+  log_sum_exp_tau: 1.0
+  
+# RL Training
+training:
+  num_epochs: 100
+  trajectories_per_epoch: 4
+  batch_size: 64
+  num_mini_epochs: 5
+  clip_epsilon: 0.2
+  learning_rate_actor: 3e-4
+  learning_rate_critic: 1e-3
+  
+# Neuro-Symbolic Losses
+losses:
+  lambda_logic: 1.0
+  lambda_safety: 1.0
+  lambda_temporal: 1.0
+  alpha_entropy: 0.01
+  c1_value_function: 0.5
+  c2_entropy: 0.01
+  alpha_safety: 1.0
+  alpha_temporal: 1.0
+  
+# UBI Server
+ubi:
+  consensus_threshold: 0.7
+  consolidation_interval: 10  # epochs
+  
+# Logging
+logging:
+  tensorboard_dir: "./runs"
+  checkpoint_dir: "./checkpoints"
+  log_interval: 10
+  
+# Scenario
+scenario:
+  traffic_density: 0.75
+  battery_level: 0.08
+  friction_coefficient: 0.4
+  weather: "RAIN"
+  emergency_vehicle_detected: true
+  visibility: 15.0
+  network_signal: 0.2
+  operator_trust: 0.45
