@@ -300,21 +300,6 @@ Backend server for multi-agent knowledge consolidation.
 ```
 
 ---
-
-## Citation
-
-If you use this implementation in your research, please cite:
-
-```bibtex
-@inproceedings{neuralsymbolic-driving-2024,
-  title={Cognitive Driving Genomes: A Neuro-Symbolic Foundation for Safe, 
-         Explainable, and Transferable Multi-Agent Autonomous Systems},
-  author={Your Name},
-  booktitle={AAAI Conference on Artificial Intelligence},
-  year={2024}
-}
-```
-
 ---
 
 ## Contributing
